@@ -46,7 +46,7 @@ def relu(x: Array) -> Array:
     x : input array
   """
   return jnp.maximum(x, 0)
-relu.defjvp(lambda g, ans, x: lax.select(x > 0, g, lax.full_like(g, 0)))
+relu.defjvps(lambda g, ans, x: lax.select(x > 0, g, lax.full_like(g, 0)))
 
 def softplus(x: Array) -> Array:
   r"""Softplus activation function.
